@@ -43,7 +43,5 @@ def test_website_after_search(page: Page):
     page.locator(COOKIE_CONSENT).click()
 
     check_sign_in(page)
-
-    sleep(5)
-    page.wait_for_selector(SORTING_DROPDOWN).select_option('Price: Low to high')
+    page.wait_for_selector(SORTING_DROPDOWN)
     
