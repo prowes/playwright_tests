@@ -30,6 +30,4 @@ def test_website_after_search(page: Page):
     actual_text = page.locator('id=Qnav-link-accountList-nav-line-1').inner_text()
     expected_text = 'Hello, sign in'
     assert actual_text == expected_text, f'Received: {actual_text}'
-
-    #sleep(5)
     page.wait_for_selector('id=s-result-sort-select')
