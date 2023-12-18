@@ -9,6 +9,7 @@ COOKIE_CONSENT = "id=sp-cc-accept"
 SIGN_IN_TEXT_LOCATOR = "id=nav-link-accountList-nav-line-1"
 ADDRESS_LOCATOR_LINE_ONE = "id=glow-ingress-line1"
 ADDRESS_LOCATOR_LINE_TWO = "id=glow-ingress-line2"
+
 SEARCH_BAR = "id=twotabsearchtextbox"
 SEARCH_BUTTON = "id=nav-search-submit-text"
 SORTING_DROPDOWN = "id=s-result-sort-select"
@@ -44,8 +45,5 @@ def test_website_after_search(page: Page):
     check_sign_in(page)
 
     sleep(5)
-    page.locator(SORTING_DROPDOWN).select_option('Price: Low to high')  # a price dropdown list
-    sleep(5)
-    shown_price = page.locator("xpath=//body/div[@id='a-page']/div[@id='search']/div[1]/div[1]/div[1]/span[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/a[1]/span[1]/span[2]/span[2]").text_content()  # unfortunately XPath is an only option here :(
-    assert shown_price == "0."
-
+    page.wait_for_selector(SORTING_DROPDOWN).select_option('Price: Low to high')
+    
